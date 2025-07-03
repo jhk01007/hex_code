@@ -1,7 +1,10 @@
 package com.example.hex_code.account.domain;
 
 import com.example.hex_code.account.domain.Account;
+import com.example.hex_code.account.domain.Account.AccountId;
 import com.example.hex_code.account.domain.Money;
+import jakarta.validation.Valid;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
@@ -21,19 +24,19 @@ public class Activity {
      * 이 활동을 소유한 계좌입니다.
      */
     @NonNull
-    private final Account.AccountId ownerAccountId;
+    private final AccountId ownerAccountId;
 
     /**
      * 출금된(차감된) 계좌입니다.
      */
     @NonNull
-    private final Account.AccountId sourceAccountId;
+    private final AccountId sourceAccountId;
 
     /**
      * 입금된(가산된) 계좌입니다.
      */
     @NonNull
-    private final Account.AccountId targetAccountId;
+    private final AccountId targetAccountId;
 
     /**
      * 이 활동이 발생한 시간입니다.
@@ -48,9 +51,9 @@ public class Activity {
     private final Money money;
 
     public Activity(
-            @NonNull Account.AccountId ownerAccountId,
-            @NonNull Account.AccountId sourceAccountId,
-            @NonNull Account.AccountId targetAccountId,
+            @NonNull AccountId ownerAccountId,
+            @NonNull AccountId sourceAccountId,
+            @NonNull AccountId targetAccountId,
             @NonNull LocalDateTime timestamp,
             @NonNull Money money) {
         this.id = null;
